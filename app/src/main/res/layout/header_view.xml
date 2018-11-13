@@ -1,0 +1,28 @@
+<layout>
+
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/color_f06292"
+				android:fitsSystemWindows="true"
+				android:orientation="vertical">
+
+				<com.assistant.uaua.framework.widget.CircleImageView
+						android:id="@+id/img_main_header_portrait"
+						android:layout_width="100dp"
+						android:layout_height="100dp"
+						android:layout_gravity="center_horizontal"
+						android:src="@drawable/icon_portrait_default"
+						android:layout_marginTop="30dp"/>
+
+				<TextView
+						android:id="@+id/txt_main_header_name"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal"
+						android:layout_marginTop="20dp"
+						android:layout_marginBottom="20dp"
+						android:textColor="@android:color/white"
+						android:textSize="20sp"/>
+		</LinearLayout>
+</layout>

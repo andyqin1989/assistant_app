@@ -1,0 +1,52 @@
+ext.deps = [:]
+
+def app_config = [:]
+app_config.versionCode = 1
+app_config.versionName = "1.0"
+ext.app_config = app_config
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 28
+build_versions.compile_sdk = 28
+build_versions.build_tools = "28.0.0"
+ext.build_versions = build_versions
+
+def versions = [:]
+versions.support = "28.0.0"
+versions.rxjava2 = "2.1.16"
+versions.rxandroid = "2.0.2"
+versions.retrofit = "2.4.0"
+versions.gson = "2.8.5"
+versions.arch_core = "2.0.0"
+versions.room_version = "2.0.0"
+
+def debs = [:]
+
+def support = [:]
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.appcompat = "com.android.support:appcompat-v7:$versions.support"
+
+def library = [:]
+library.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+library.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+debs.library = library
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+retrofit.logger = "com.squareup.okhttp3:logging-interceptor:3.8.1"
+debs.retrofit = retrofit
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room_version"
+room.compiler = "androidx.room:room-compiler:$versions.room_version"
+debs.room = room
+
+def json = [:]
+json.gson = "com.google.code.gson:gson:$versions.gson"
+debs.json = json
+
+ext.deps = debs
+ext.addRepos = this.&addRepos

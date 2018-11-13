@@ -1,0 +1,17 @@
+<resources>
+
+		<style name="text_16_fff">
+				<item name="android:textColor">#ffffff</item>
+				<item name="android:textSize">16sp</item>
+		</style>
+
+		<style name="text_16_4e">
+				<item name="android:textColor">#4e4d4e</item>
+				<item name="android:textSize">16sp</item>
+		</style>
+
+		<style name="text_16_colorAccent">
+				<item name="android:textColor">@color/colorAccent</item>
+				<item name="android:textSize">16sp</item>
+		</style>
+</resources>

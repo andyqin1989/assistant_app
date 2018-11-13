@@ -1,0 +1,149 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+
+		<data>
+
+				<import type="android.view.View"/>
+
+				<variable
+						name="loginModel"
+						type="com.assistant.uaua.business.ui.login.LoginModel"/>
+		</data>
+
+		<androidx.coordinatorlayout.widget.CoordinatorLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:fitsSystemWindows="true">
+
+				<com.google.android.material.appbar.AppBarLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<androidx.appcompat.widget.Toolbar
+								android:id="@+id/toolBar_login"
+								android:layout_width="wrap_content"
+								android:layout_height="?attr/actionBarSize"
+								app:navigationContentDescription="返回"
+								app:navigationIcon="@drawable/back_red"
+								app:title="登录"
+								app:titleTextColor="@color/colorAccent"/>
+				</com.google.android.material.appbar.AppBarLayout>
+
+				<androidx.core.widget.NestedScrollView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:fillViewport="true"
+						app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+						<FrameLayout
+								android:layout_width="match_parent"
+								android:layout_height="match_parent">
+
+								<LinearLayout
+										android:layout_width="match_parent"
+										android:layout_height="match_parent"
+										android:orientation="vertical">
+
+										<Space
+												android:layout_width="1dp"
+												android:layout_height="50dp"/>
+
+										<com.google.android.material.textfield.TextInputLayout
+												android:id="@+id/input_layout_name_login"
+												android:layout_width="match_parent"
+												android:layout_height="wrap_content"
+												android:layout_marginTop="10dp"
+												app:hintTextAppearance="@style/text_16_colorAccent"
+												android:orientation="vertical"
+
+												android:visibility="@{loginModel.isHasAccount ? View.GONE : View.VISIBLE}">
+
+												<com.google.android.material.textfield.TextInputEditText
+														android:id="@+id/edit_name_login"
+														android:layout_width="wrap_content"
+														android:layout_height="wrap_content"
+														android:minWidth="150dp"
+														android:layout_gravity="center_horizontal"
+														android:hint="你的姓名"
+														android:textSize="16sp"
+														android:text=""/>
+
+										</com.google.android.material.textfield.TextInputLayout>
+
+										<com.google.android.material.textfield.TextInputLayout
+												android:id="@+id/input_layout_phone_login"
+												android:layout_width="match_parent"
+												android:layout_height="wrap_content"
+												android:layout_marginTop="10dp"
+												app:hintTextAppearance="@style/text_16_colorAccent"
+												android:orientation="vertical">
+
+												<com.google.android.material.textfield.TextInputEditText
+														android:id="@+id/edit_phone_login"
+														android:layout_width="wrap_content"
+														android:layout_height="wrap_content"
+														android:layout_gravity="center_horizontal"
+														android:minWidth="150dp"
+														android:maxLength="11"
+														android:inputType="phone"
+														android:hint="手机号"
+														android:textSize="16sp"
+														android:text=""/>
+
+										</com.google.android.material.textfield.TextInputLayout>
+
+
+										<com.google.android.material.textfield.TextInputLayout
+												android:id="@+id/input_layout_password_login"
+												android:layout_width="match_parent"
+												android:layout_height="wrap_content"
+												android:layout_marginTop="10dp"
+												app:hintTextAppearance="@style/text_16_colorAccent"
+												android:orientation="vertical">
+
+
+												<com.google.android.material.textfield.TextInputEditText
+														android:id="@+id/edit_password_login"
+														android:layout_width="wrap_content"
+														android:layout_height="wrap_content"
+														android:minWidth="150dp"
+														android:layout_gravity="center_horizontal"
+														android:hint="密码"
+														android:inputType="numberPassword"
+														android:textSize="16sp"
+														android:text=""/>
+
+										</com.google.android.material.textfield.TextInputLayout>
+
+										<Button
+												android:id="@+id/btn_login"
+												android:layout_width="150dp"
+												android:layout_height="wrap_content"
+												android:layout_gravity="center_horizontal"
+												android:layout_marginTop="20dp"
+												android:textSize="16sp"
+												android:textColor="@android:color/white"
+												android:background="@color/color_f06292"
+												android:text="@{loginModel.loginOrRegister()}"/>
+
+
+										<TextView
+												android:id="@+id/txt_login_switch"
+												android:layout_width="wrap_content"
+												android:layout_height="wrap_content"
+												android:textColor="@color/color_ec407a"
+												android:paddingLeft="10dp"
+												android:paddingRight="10dp"
+												android:layout_marginTop="10dp"
+												android:paddingTop="5dp"
+												android:paddingBottom="5dp"
+												android:text="@{loginModel.registerOrHasAccount()}"
+												android:layout_marginStart="30dp"
+												android:textSize="16sp"
+												android:layout_marginBottom="20dp"/>
+								</LinearLayout>
+						</FrameLayout>
+
+				</androidx.core.widget.NestedScrollView>
+		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
