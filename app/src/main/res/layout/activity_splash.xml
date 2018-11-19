@@ -10,7 +10,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/splash" />
 
-        <com.assistant.uaua.widget.CircleTextView
+        <com.assistant.ua.widget.CircleTextView
             android:id="@+id/txt_splash_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

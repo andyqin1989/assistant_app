@@ -7,7 +7,7 @@
 				android:fitsSystemWindows="true"
 				android:orientation="vertical">
 
-				<com.assistant.uaua.framework.widget.CircleImageView
+				<com.assistant.ua.framework.widget.CircleImageView
 						android:id="@+id/img_main_header_portrait"
 						android:layout_width="100dp"
 						android:layout_height="100dp"

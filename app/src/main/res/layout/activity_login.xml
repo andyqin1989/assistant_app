@@ -7,7 +7,7 @@
 
 				<variable
 						name="loginModel"
-						type="com.assistant.uaua.business.ui.login.LoginModel"/>
+						type="com.assistant.ua.business.ui.login.LoginModel"/>
 		</data>
 
 		<androidx.coordinatorlayout.widget.CoordinatorLayout
