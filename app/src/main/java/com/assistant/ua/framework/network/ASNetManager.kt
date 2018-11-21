@@ -36,7 +36,7 @@ open class ASNetManager private constructor() {
 
         retrofit = Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("***")
+            .baseUrl("http://123.57.242.138:1109")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(ASGsonConverterFactory.create())
             .build()

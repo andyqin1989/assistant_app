@@ -7,6 +7,19 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    def keystorePropertiesFile = rootProject.file("/Users/qinbaoyuan/WorkSpace/Android/assistant_app/app/keystore.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.assistant.ua"
@@ -16,17 +29,38 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
         }
     }
 
     android {
         dataBinding {
             enabled = true
+        }
+    }
+
+    productFlavors {
+        xiaomi {
+            manifestPlaceholders = [CHANNEL: "xiaomi"]
+        }
+        baidu {
+
+        }
+        qihu360 {
+
+        }
+        huawei {
+
         }
     }
 }
@@ -36,7 +70,7 @@ kapt {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.material:material:1.1.0-alpha01'
@@ -44,20 +78,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-
     def lifecycle_version = "2.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-
     implementation 'com.github.bumptech.glide:glide:4.8.0'
-    //annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
-
     def room_version = "2.0.0"
-
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
-
-
+    kapt "androidx.room:room-compiler:$room_version"
     api deps.library.rxjava2
     api deps.library.rxandroid
     api deps.retrofit.runtime
@@ -65,11 +92,6 @@ dependencies {
     api deps.retrofit.adapter
     api deps.retrofit.logger
     api deps.json.gson
-
     //第三方控件
-//    implementation 'com.zzhoujay.richtext:richtext:2.5.4'
     implementation 'com.zzhoujay.markdown:markdown:1.0.5'
-
-
-
 }
