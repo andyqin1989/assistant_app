@@ -4,6 +4,8 @@
 
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+		<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
 		<application
 				android:name="com.assistant.ua.ASApp"
@@ -34,6 +36,8 @@
 						android:name="com.assistant.ua.business.ui.login.LoginActivity"
 						android:theme="@style/AppTheme"
 						android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+				<activity android:name=".business.ui.blog.BlogDetailActivity"/>
 		</application>
 
 

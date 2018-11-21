@@ -1,30 +1,30 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/splash" />
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@drawable/icon_splash"
+						android:layout_gravity="center_horizontal|bottom"
+						android:layout_marginBottom="50dp"/>
 
-        <com.assistant.ua.widget.CircleTextView
-            android:id="@+id/txt_splash_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|top"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/bg_oval_black_a20"
-            android:gravity="center"
-            android:padding="2dp"
-            android:paddingStart="5dp"
-            android:paddingTop="3dp"
-            android:paddingEnd="5dp"
-            android:paddingBottom="3dp"
-            android:textColor="@android:color/holo_orange_light"
-            app:bg="#30000000" />
-    </FrameLayout>
+				<com.assistant.ua.widget.CircleTextView
+						android:id="@+id/txt_splash_num"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="end|top"
+						android:layout_marginTop="25dp"
+						android:layout_marginEnd="15dp"
+						android:gravity="center"
+						android:padding="2dp"
+						android:paddingStart="5dp"
+						android:paddingTop="3dp"
+						android:paddingEnd="5dp"
+						android:paddingBottom="3dp"
+						android:textColor="@android:color/holo_orange_light"
+						app:bg="#00000000"/>
+		</FrameLayout>
 </layout>

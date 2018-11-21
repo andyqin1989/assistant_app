@@ -5,7 +5,7 @@ open class LFBaseResponse {
     var message: String? = null
 
     public fun succeed(): Boolean {
-        return status == 1
+        return status == 0
     }
 
 }

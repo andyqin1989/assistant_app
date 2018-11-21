@@ -37,7 +37,7 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.material:material:1.1.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
@@ -65,4 +65,11 @@ dependencies {
     api deps.retrofit.adapter
     api deps.retrofit.logger
     api deps.json.gson
+
+    //第三方控件
+//    implementation 'com.zzhoujay.richtext:richtext:2.5.4'
+    implementation 'com.zzhoujay.markdown:markdown:1.0.5'
+
+
+
 }

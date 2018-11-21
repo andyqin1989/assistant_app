@@ -16,10 +16,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import com.assistant.ua.LFUserInfo
 import com.assistant.ua.R
-import com.assistant.ua.business.ui.life.ASLifeFragment
+import com.assistant.ua.business.ui.life.ASAmuseMentFragment
 import com.assistant.ua.business.ui.login.LoginActivity
-import com.assistant.ua.business.ui.study.ASStudyFragment
-import com.assistant.ua.business.ui.work.ASWorkFragment
+import com.assistant.ua.business.ui.studywork.ASWorkFragment
+import com.assistant.ua.business.ui.blog.ASBlogFragment
 import com.assistant.ua.databinding.ActivityMainBinding
 import com.assistant.ua.datasource.room.DbRepository
 import com.assistant.ua.framework.base.ui.ServiceActivity
@@ -41,6 +41,8 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
     private lateinit var drawerHeader: View
     private lateinit var nickNameTxt: TextView
     private lateinit var portraitImg: ImageView
+
+    private lateinit var blogFragment: ASBlogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,17 +80,19 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
     private fun setupViewPager() {
         tabLayout.setupWithViewPager(viewPager)
         val adapter = MainViewPagerAdapter(supportFragmentManager)
-        adapter.addFragments(ASLifeFragment(), "生活")
+        blogFragment = ASBlogFragment()
+        adapter.addFragments(blogFragment, "博客")
         adapter.addFragments(ASWorkFragment(), "工作")
-        adapter.addFragments(ASStudyFragment(), "学习")
+        adapter.addFragments(ASAmuseMentFragment(), "其他")
         viewPager.adapter = adapter
     }
 
 
     private fun showUserInfo() {
-        GlideLoader.loadImage(this, LFUserInfo.instance.portraitUrl, portraitImg)
+        GlideLoader.loadPortraitImage(this, LFUserInfo.instance.portraitUrl, portraitImg)
         if (LFUserInfo.instance.isLogin()) {
             nickNameTxt.text = "您好 ".plus(LFUserInfo.instance.userName)
+            nickNameTxt.setOnClickListener(null)
 
         } else {
             nickNameTxt.text = ("登录").toString()
@@ -153,6 +157,7 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
      */
     private fun loginSucceed() {
         showUserInfo()
+        blogFragment.loginSucceed()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

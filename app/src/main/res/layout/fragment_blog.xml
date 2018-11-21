@@ -1,0 +1,34 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+		<data>
+
+				<variable
+						name="isLoading"
+						type="boolean"/>
+		</data>
+
+		<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<com.assistant.ua.framework.recycler.LCSwipeRefreshLayout
+						android:id="@+id/sr_blog_layout"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						app:refreshing="@{isLoading}">
+
+						<androidx.recyclerview.widget.RecyclerView
+								android:id="@+id/rv_blog"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"/>
+				</com.assistant.ua.framework.recycler.LCSwipeRefreshLayout>
+
+				<com.google.android.material.floatingactionbutton.FloatingActionButton
+						android:id="@+id/fab_blog"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="bottom|end"
+						android:layout_margin="16dp"
+						app:srcCompat="@drawable/icon_add_white"/>
+		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

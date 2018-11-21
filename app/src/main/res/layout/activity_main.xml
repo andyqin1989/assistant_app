@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+		xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/drawer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:fitsSystemWindows="true">
+		<androidx.drawerlayout.widget.DrawerLayout
+				android:id="@+id/drawer_layout"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:fitsSystemWindows="true">
 
-        <include
-                android:id="@+id/include_app_bar_main"
-                layout="@layout/app_bar_main"/>
+				<include
+						android:id="@+id/include_app_bar_main"
+						layout="@layout/app_bar_main"/>
 
 
-        <com.google.android.material.navigation.NavigationView
-                android:id="@+id/nv_main"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                app:headerLayout="@layout/header_view"
-                app:menu="@menu/activity_main_drawer"/>
+				<com.google.android.material.navigation.NavigationView
+						android:id="@+id/nv_main"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:layout_gravity="start"
+						app:itemTextColor="@null"
+						app:itemIconTint="@color/color_e91w63"
+						app:headerLayout="@layout/header_view"
+						app:menu="@menu/activity_main_drawer"/>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+		</androidx.drawerlayout.widget.DrawerLayout>
 </layout>

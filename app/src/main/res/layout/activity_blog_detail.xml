@@ -1,0 +1,49 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+
+		<data>
+
+				<variable
+						name="blogContent"
+						type="String"/>
+		</data>
+
+		<androidx.coordinatorlayout.widget.CoordinatorLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:fitsSystemWindows="true"
+				android:background="@android:color/white">
+
+				<com.google.android.material.appbar.AppBarLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<androidx.appcompat.widget.Toolbar
+								android:id="@+id/toolbar_blog_content"
+								android:layout_width="match_parent"
+								android:layout_height="?attr/actionBarSize"
+								android:background="?attr/colorPrimary"
+								app:titleTextColor="@color/colorAccent"
+								app:navigationContentDescription="返回"
+								app:navigationIcon="@drawable/back_red"
+								app:title="博文详情"/>
+				</com.google.android.material.appbar.AppBarLayout>
+
+				<androidx.core.widget.NestedScrollView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+						<TextView
+								android:id="@+id/txt_blog_content"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:text="@{blogContent}"
+								android:padding="15dp"
+								android:layout_marginVertical="5dp"
+								android:textSize="18sp"
+								android:textColor="@color/color_4e4e4e"/>
+				</androidx.core.widget.NestedScrollView>
+		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,5 +1,6 @@
 package com.assistant.ua.framework;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,9 @@ public class AppExecutor {
     private int maximumPoolSize = 5;
     private int keepAliveTime = 300;
     private LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<>(128);
+    private LinkedBlockingQueue<Runnable> singleQueue = new LinkedBlockingQueue<>(128);
+
+    private ThreadPoolExecutor singleExecutor;
 
 
     private ThreadPoolExecutor executor;
@@ -33,6 +37,15 @@ public class AppExecutor {
                 TimeUnit.SECONDS,
                 queue,
                 new ThreadPoolExecutor.AbortPolicy());
+
+        singleExecutor = new ThreadPoolExecutor(
+                1,
+                1,
+                keepAliveTime,
+                TimeUnit.SECONDS,
+                singleQueue,
+                new ThreadPoolExecutor.AbortPolicy());
+        singleExecutor.allowCoreThreadTimeOut(true);
     }
 
     /**
@@ -47,5 +60,12 @@ public class AppExecutor {
      */
     public void remove(Runnable runnable) {
         executor.remove(runnable);
+    }
+
+    /**
+     * 使用单线程执模式行io操作的任务
+     */
+    public void executeIoTask(Runnable runnable) {
+        singleExecutor.execute(runnable);
     }
 }

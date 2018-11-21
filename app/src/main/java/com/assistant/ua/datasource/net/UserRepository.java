@@ -1,12 +1,18 @@
 package com.assistant.ua.datasource.net;
 
+import com.assistant.ua.datasource.entity.BlogEntity;
+import com.assistant.ua.datasource.net.request.AddBlogRequest;
+import com.assistant.ua.datasource.net.request.GetAllBlogRequest;
 import com.assistant.ua.datasource.net.request.LoginRequest;
 import com.assistant.ua.datasource.net.request.RegisterRequest;
-import com.assistant.ua.datasource.net.response.LoginResponse;
-import com.assistant.ua.datasource.net.response.RegisterResponse;
+import com.assistant.ua.datasource.net.response.*;
 import com.assistant.ua.framework.network.ASNetManager;
 import com.assistant.ua.datasource.net.api.INetEngine;
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
+import java.util.List;
 
 /**
  * Created by qinbaoyuan on 2018/11/12
@@ -53,6 +59,23 @@ public class UserRepository {
 
     public Observable getUserList() {
         return netEngine.getUserList();
+    }
+
+    /**
+     * 添加任务
+     */
+    public Observable<AddTaskResponse> addBlog(AddBlogRequest request) {
+        return netEngine.addBlog(request);
+    }
+
+    /**
+     * 返回所有对任务
+     */
+    public Observable<List<BlogEntity>> getAllBlog(GetAllBlogRequest request) {
+        return netEngine.getAllBlog(request)
+                .map(new HttpResultFun<List<BlogEntity>>())
+                .subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread());
     }
 
 }
