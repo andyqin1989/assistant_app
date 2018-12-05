@@ -1,9 +1,14 @@
 package com.assistant.ua.business.ui
 
 import android.app.Activity
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
+import android.os.IBinder
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -16,6 +21,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import com.assistant.ua.LFUserInfo
 import com.assistant.ua.R
+import com.assistant.ua.business.service.DownloadBinder
+import com.assistant.ua.business.service.DownloadService
 import com.assistant.ua.business.ui.life.ASAmuseMentFragment
 import com.assistant.ua.business.ui.login.LoginActivity
 import com.assistant.ua.business.ui.studywork.ASWorkFragment
@@ -44,6 +51,19 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
 
     private lateinit var blogFragment: ASBlogFragment
 
+
+    private var downloadBinder: DownloadBinder? = null
+
+    private var serviceConnection = object : ServiceConnection {
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+        }
+
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            this@MainActivity.downloadBinder = service as DownloadBinder
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -51,6 +71,7 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
         setupDrawerLayout()
         showUserInfo()
         setupViewPager()
+        bindService(Intent(this, DownloadService::class.java), serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
     private fun initViews() {
@@ -62,6 +83,9 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
         drawerHeader = mainBinding.nvMain.getHeaderView(0)
         nickNameTxt = drawerHeader.findViewById(R.id.txt_main_header_name)
         portraitImg = drawerHeader.findViewById(R.id.img_main_header_portrait)
+
+        var options = BitmapFactory.Options()
+        options.inSampleSize
     }
 
     private fun setupDrawerLayout() {
@@ -125,6 +149,7 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
         when (p0.itemId) {
             R.id.nav_check_new_version -> {
                 Toast.makeText(this, "检查版本更新", Toast.LENGTH_LONG).show()
+                downloadBinder?.startDownLoad(this@MainActivity)
                 closeDrawerLayout()
             }
 
@@ -167,5 +192,10 @@ class MainActivity : ServiceActivity(), NavigationView.OnNavigationItemSelectedL
                 LOGIN_REQUEST -> loginSucceed()
             }
         }
+    }
+
+    override fun onDestroy() {
+        unbindService(serviceConnection)
+        super.onDestroy()
     }
 }

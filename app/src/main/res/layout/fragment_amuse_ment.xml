@@ -6,6 +6,6 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
-						android:text="I Am AmuseMent"/>
+						android:text="功能待开发"/>
 		</FrameLayout>
 </layout>

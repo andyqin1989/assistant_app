@@ -59,7 +59,7 @@ public class Db {
         values.put("current_length", data.getCurrentLength());
         values.put("total_length", data.getTotalLength());
         values.put("percentage", data.getPercentage());
-        values.put("status", data.getStatus());
+        values.put("code", data.getStatus());
         values.put("last_modify", data.getLastModify());
         values.put("date", data.getDate());
         values.put("task_id", data.getTaskId());
@@ -93,7 +93,7 @@ public class Db {
         data.setCurrentLength(cursor.getInt(cursor.getColumnIndex("current_length")));
         data.setTotalLength(cursor.getInt(cursor.getColumnIndex("total_length")));
         data.setPercentage(cursor.getFloat(cursor.getColumnIndex("percentage")));
-        data.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
+        data.setStatus(cursor.getInt(cursor.getColumnIndex("code")));
         data.setLastModify(cursor.getString(cursor.getColumnIndex("last_modify")));
         data.setDate(cursor.getInt(cursor.getColumnIndex("date")));
         data.setTaskId(cursor.getInt(cursor.getColumnIndex("task_id")));
@@ -122,7 +122,7 @@ public class Db {
                 data.setCurrentLength(cursor.getInt(cursor.getColumnIndex("current_length")));
                 data.setTotalLength(cursor.getInt(cursor.getColumnIndex("total_length")));
                 data.setPercentage(cursor.getFloat(cursor.getColumnIndex("percentage")));
-                data.setStatus(cursor.getInt(cursor.getColumnIndex("status")));
+                data.setStatus(cursor.getInt(cursor.getColumnIndex("code")));
                 data.setLastModify(cursor.getString(cursor.getColumnIndex("last_modify")));
                 data.setDate(cursor.getInt(cursor.getColumnIndex("date")));
                 data.setTaskId(cursor.getInt(cursor.getColumnIndex("task_id")));
@@ -144,7 +144,7 @@ public class Db {
             values.put("current_length", currentSize);
             values.put("percentage", percentage);
         }
-        values.put("status", status);
+        values.put("code", status);
         mSQLiteDatabase.update(TABLE_NAME_DOWNLOAD, values, "url = ?", new String[]{url});
     }
 

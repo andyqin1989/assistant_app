@@ -1,0 +1,7 @@
+<resources>
+		<paths>
+				<external-path
+						name="assistant"
+						path=""/>
+		</paths>
+</resources>

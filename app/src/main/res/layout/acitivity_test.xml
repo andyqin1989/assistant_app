@@ -1,0 +1,52 @@
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<com.assistant.ua.business.ui.blog.widget.MyTextView
+				android:layout_width="200dp"
+				android:text="我是秦保远"
+				android:layout_height="wrap_content"/>
+
+</LinearLayout>-->
+
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/id_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            <View android:layout_width="match_parent"
+                  android:layout_height="200dp"
+                  android:background="@android:color/holo_purple"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="200dp"
+                  android:background="@android:color/holo_orange_light"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="200dp"
+                  android:background="@android:color/white"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="200dp"
+                  android:background="@android:color/white"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.assistant.ua.business.ui.blog.widget.FollowFragTopView
+            android:id="@+id/id_follow_top_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</FrameLayout>

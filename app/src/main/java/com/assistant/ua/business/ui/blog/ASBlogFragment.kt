@@ -36,6 +36,7 @@ class ASBlogFragment : ServiceFragment(), View.OnClickListener, SwipeRefreshLayo
         when (v?.id) {
             R.id.fab_blog -> {
                 //testNofication()
+                startActivity(Intent(this@ASBlogFragment.activity, TestActivity::class.java))
             }
         }
     }

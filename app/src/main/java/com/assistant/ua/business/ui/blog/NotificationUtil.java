@@ -1,6 +1,5 @@
 package com.assistant.ua.business.ui.blog;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -31,14 +30,12 @@ public class NotificationUtil {
     }
 
     private NotificationManager manager;
-    private Notification notification;
-    private NotificationChannel channel;
 
     private SparseArray<NotificationCompat.Builder> notificationMap = new SparseArray<>();
 
     private NotificationCompat.Builder initNotification(Context context, String title, String content) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            channel = new NotificationChannel("assistant", "小秘书", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("assistant", "小秘书", NotificationManager.IMPORTANCE_DEFAULT);
             channel.setLightColor(Color.RED);
             manager.createNotificationChannel(channel);
         }
@@ -56,5 +53,17 @@ public class NotificationUtil {
         NotificationCompat.Builder builder = initNotification(context, title, content);
         manager.notify(notifyId, builder.build());
         notificationMap.put(notifyId, builder);
+    }
+
+    public void updateNotification(int notifyId, float progress) {
+        NotificationCompat.Builder builder = notificationMap.get(notifyId);
+        builder.setProgress(100, (int) progress, false);
+        builder.setContentText(progress + "%");
+        manager.notify(notifyId, builder.build());
+    }
+
+    public void cancelNotification(int notifyId) {
+        manager.cancel(notifyId);
+        notificationMap.remove(notifyId);
     }
 }
